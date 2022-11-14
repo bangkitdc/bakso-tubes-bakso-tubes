@@ -1,0 +1,78 @@
+Terminals:
+( ) (none) , && || ! true false + - * / % = < > (not) (is) in " ' [ ] { } for : # if else while do break continue pass function return (range) (raise) try catch throw class (from) import export (as) label with **** switch var let const async await  ****
+Variables:
+SS ALPHABET NUMBER OTHER
+Productions:
+SS -> SS SS
+ALPHABET -> a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z;
+NUMBER -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+OTHER -> $ | & | . | ? | @ | \ | ^ | ` | ~ | SERU | HASHTAG | PERSEN | RBO | RBC | MUL | PLUS | MIN | COMMA | DIVIDE | COLON | LESS | EQUAL | GREAT | SBO | SBC | UNDERSCORE | CBO | CBC | |;
+SYNTAX ->
+
+OP -> PLUS | MIN | MUL | DIVIDE | POW | PERSEN;
+RELATION -> GREAT EQUAL | LESS EQUAL | EQUAL EQUAL | EQUAL EQUAL EQUAL | SERU EQUAL | LESS | GREAT | (ISS) | (ISS NOTS) | INS | NOTS INS;
+STRING_WORD -> STRING_WORD STRING_WORD | ALPHABET | NUMBER | OTHER | SYNTAX;
+STRING -> STRING STRING | PETIK2 STRING_WORD PETIK2 | PETIK1 STRING_WORD PETIK1;
+COMMENT -> SLASH STARS STRING_WORD STARS SLASH;
+
+FUNCTION -> 
+
+SERU -> !;
+SLASH -> /;
+HASHTAG -> #;
+PERSEN -> %;
+RBO -> (;
+RBC -> );
+MUL -> *;
+STARS -> *;
+POW -> * *;
+PLUS -> +;
+MIN -> -;
+COMMA -> ,;
+DIVIDE -> /;                
+DIV -> / /;                 ()
+COLON -> :;
+LESS -> <;
+EQUAL -> =;
+GREAT -> >;
+SBO -> [;
+SBC -> ];
+UNDERSCORE -> _;
+CBO -> {;
+CBC -> };
+PETIK1 -> ';
+PETIK2 -> ";
+NONES -> none;              ()
+ANDS -> & &;
+ORS -> or;
+ISS -> is;                  ()
+INS -> in;
+NOTS -> !;                  ()
+TRUES -> true;
+FALSES -> false;
+FORS -> for;
+IFS -> if;
+ELIFS -> else if;
+ELSES -> else;
+BREAKS -> break;
+CONTINUES -> continue;
+WHILES -> while;
+RANGES -> range;            ()
+FUNCTIONS -> function;
+RETURNS -> return;
+CLASSS -> class;
+TRYS -> try;
+THROWS -> throw;
+CATCHES -> catch;
+FROMS -> from;              ()
+IMPORTS -> import;
+EXPORTS -> export;
+ASS -> as;                  ()
+LABELS -> label;
+WITHS -> with;
+SWITCHES -> switch;
+VARS -> var;
+LETS -> let;
+CONSTS -> const;
+ASYNCS -> async;
+AWAITS -> await
