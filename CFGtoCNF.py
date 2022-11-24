@@ -17,6 +17,16 @@ def readCFG(filepath):
     
     return terminals, variables, newprods
 
+def isSimple(terminals, variables ,prod):
+	return len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in terminals
+
+def setupDict(terminals, variables, productions):
+	result = {}
+	for prod in productions:
+		if len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in terminals:
+			result[prod[1][0]] = prod[0]
+	return result
+
 def isUnitary(prod, variables):
     return len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in variables
 
@@ -47,6 +57,27 @@ def CFGtoCNF(filepath):
     terminals, variables, productions = readCFG(filepath)
     variables.append('S0')
     productions = [('S0', [variables[0]])] + productions
+    dict = setupDict(terminals, variables, productions)
+
+    newprods = []
+    newvar = "AA0"
+    for prod in productions:
+        if isSimple(terminals, variables, prod):
+            newprods.append(prod)
+        else:
+            for term in terminals:
+                for index, value in enumerate(prod[1]):
+                    if term == value and not term in dict:
+                        newvar = generateVar(newvar)
+                        dict[term] = newvar
+                        variables.append(dict[term])
+                        newprods.append((dict[term], [term]))
+                        prod[1][index] = dict[term]
+                    elif term == value:
+                        prod[1][index] = dict[term]
+            newprods.append( (prod[0], prod[1]) )
+
+    productions = newprods
 
     newprods = []
     newvar = "A0"
@@ -80,8 +111,5 @@ def CFGtoCNF(filepath):
         else:
             cnf[prod[0]] = []
             cnf[prod[0]].append(prod[1])
-
-    for i in productions:
-        print(i)
 
     return cnf
