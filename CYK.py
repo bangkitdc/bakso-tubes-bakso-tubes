@@ -42,6 +42,8 @@ R = {
 #             print(elements)
 
 def cyk(w, cnfGrammar):
+    print(w)
+
     n = len(w)
     T = [[set([]) for i in range(n)] for j in range(n)]
     t1 = threading.Thread(target=PB.ProgressBar, name='t1')
@@ -63,7 +65,6 @@ def cyk(w, cnfGrammar):
                                 T[i][j].add(var[0])
 
     t1.join()
-
     if "S0" in T[0][n-1] :
         print("Accepted Answer!")
     else:
