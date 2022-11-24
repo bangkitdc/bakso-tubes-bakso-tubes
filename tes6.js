@@ -1,3 +1,3 @@
-var tes = "gajelas"
+var tes = "gajelas";
 var a;
 a = "a";
