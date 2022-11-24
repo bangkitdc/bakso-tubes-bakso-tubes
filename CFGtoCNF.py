@@ -81,7 +81,7 @@ def CFGtoCNF(filepath):
             cnf[prod[0]] = []
             cnf[prod[0]].append(prod[1])
 
-    for i in productions:
-        print(i)
+    # for i in productions:
+    #     print(i)
 
     return cnf

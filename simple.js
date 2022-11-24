@@ -1,4 +1,3 @@
-if (true) { 
-    x = 1 
-    x = 2
+function funny() {
+    x = 2;
 }
