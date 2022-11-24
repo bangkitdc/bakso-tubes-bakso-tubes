@@ -19,16 +19,37 @@ def readCFG(filepath):
     
     return terminals, variables, newprods
 
+def isUnitary(prod, variables):
+    return len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in variables
+
+def isUnitaryExist(productions, variables):
+    for prod in productions:
+        if isUnitary(prod, variables): return True
+    return False
+
+def eliminateUnitary(productions, variables):
+    newprods = []
+    for prod in productions:
+        if isUnitary(prod, variables):
+            for iter_prod in productions:
+                if prod[1][0] == iter_prod[0] and prod[0] != iter_prod[0]:
+                    newprods.append((prod[0], iter_prod[1]))
+        else:
+            newprods.append(prod)
+    return newprods
 
 def generateVar(V):
     if V[1] == '9':
         return chr(ord(V[0])+1) + '1'
     return V[0] + chr(ord(V[1])+1)
 
-
-def simplify(variables, productions):
+def CFGtoCNF(filepath):
+    
+    terminals, variables, productions = readCFG(filepath)
+    
     newprods = []
     newvar = 'A0'
+    
     for prod in productions:
         k = len(prod[1])
         if k <= 2:
@@ -45,32 +66,12 @@ def simplify(variables, productions):
                 newprods.append((var1, [prod[1][i], var2]))
             
             newprods.append((newvar+str(k-2), prod[1][k-2:k]))
-    return newprods
+    
+    productions = newprods
 
-
-def isUnitary(prod, variables):
-    return len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in variables
-
-
-def isUnitaryExist(productions, variables):
-    for prod in productions:
-        if isUnitary(prod, variables): return True
-    return False
-
-
-def eliminateUnitary(productions, variables):
-    newprods = []
-    for prod in productions:
-        if isUnitary(prod, variables):
-            for iter_prod in productions:
-                if prod[1][0] == iter_prod[0] and prod[0] != iter_prod[0]:
-                    newprods.append((prod[0], iter_prod[1]))
-        else:
-            newprods.append(prod)
-    return newprods
-
-
-def makeCNFdictionary(productions):
+    while isUnitaryExist(productions, variables):
+        productions = eliminateUnitary(productions, variables)
+    
     dictionary = {}
     for prod in productions:
         if prod[0] in dictionary.keys():
@@ -78,12 +79,5 @@ def makeCNFdictionary(productions):
         else:
             dictionary[prod[0]] = []
             dictionary[prod[0]].append(prod[1])
+        
     return dictionary
-
-
-def CFGtoCNF(filepath):
-    terminals, variables, productions = readCFG(filepath)
-    productions = simplify(productions, variables)
-    while isUnitaryExist(productions, variables):
-        productions = eliminateUnitary(productions, variables)
-    return makeCNFdictionary(productions)
