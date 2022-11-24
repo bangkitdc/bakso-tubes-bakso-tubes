@@ -9,8 +9,7 @@
 # Nom  ->  book | orange | man
 
 # Non-terminal symbols
-import threading
-import ProgressBar as PB
+
 non_terminals = ["NP", "Nom", "Det", "AP",
                   "Adv", "A"]
 
@@ -46,7 +45,7 @@ def cyk(w, cnfGrammar):
 
     n = len(w)
     T = [[set([]) for i in range(n)] for j in range(n)]
-    t1 = threading.Thread(target=PB.ProgressBar, name='t1')
+
     # t1.start()
     for i in range(n):
         for var in cnfGrammar.items():
