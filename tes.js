@@ -1,7 +1,7 @@
 
 function funny(x) {
     for (let i = 0 ; i < 5 ; i++) {
-        x = x + i
+        x = x + i;
     }
-    return x
+    return x;
 }
