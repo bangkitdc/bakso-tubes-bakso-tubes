@@ -47,7 +47,7 @@ def cyk(w, cnfGrammar):
     n = len(w)
     T = [[set([]) for i in range(n)] for j in range(n)]
     t1 = threading.Thread(target=PB.ProgressBar, name='t1')
-    t1.start()
+    # t1.start()
     for i in range(n):
         for var in cnfGrammar.items():
                 for termin in var[1]:
@@ -64,11 +64,13 @@ def cyk(w, cnfGrammar):
                             if(prod[0] in T[i][k]) and (prod[1] in T[k+1][j]):
                                 T[i][j].add(var[0])
 
-    t1.join()
+    # t1.join()
     if "S0" in T[0][n-1] :
-        print("Accepted Answer!")
+        return True
+        # print("Accepted Answer!")
     else:
-        print("Syntax Error!")
+        return False
+        # print("Syntax Error!")
 
 # w = "a very heavy orange book".split()
 # cyk(w, R)
