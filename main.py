@@ -4,6 +4,10 @@ import CYK
 import CodeSplitter as split
 import threading
 import ProgressBar as PB
+import splashscreen
+
+
+splashscreen.splash()
 t1 = threading.Thread(target=PB.ProgressBar, name='t1')
 t1.start()
 
