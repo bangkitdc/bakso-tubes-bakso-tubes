@@ -15,9 +15,10 @@ CNFGrammar = CFGtoCNF.CFGtoCNF("grammarfixfix.txt")
 filename = sys.argv[1]
 print("Please wait! Compiling ...")
 output = split.splitCode(filename)
-flag = CYK.cyk(output, CNFGrammar)
+
 
 t1.join()
+flag = CYK.cyk(output, CNFGrammar)
 if flag :
     print("Accepted Answer!")
 else:
