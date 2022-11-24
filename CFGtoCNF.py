@@ -1,5 +1,3 @@
-import string
-
 def readCFG(filepath):
     file = open(filepath, 'r').read()
     terminals = file.split("Variables:")[0]
@@ -39,16 +37,19 @@ def eliminateUnitary(productions, variables):
     return newprods
 
 def generateVar(V):
-    if V[1] == '9':
-        return chr(ord(V[0])+1) + '1'
-    return V[0] + chr(ord(V[1])+1)
+    if V[-1] == '9':
+        return V[:-2] + chr(ord(V[-2])+1) + '1'
+    return V[:-2] + V[-2] + chr(ord(V[-1])+1)
+
 
 def CFGtoCNF(filepath):
     
     terminals, variables, productions = readCFG(filepath)
-    
+    variables.append('S0')
+    productions = [('S0', [variables[0]])] + productions
+
     newprods = []
-    newvar = 'A0'
+    newvar = "A0"
     
     for prod in productions:
         k = len(prod[1])
@@ -72,12 +73,17 @@ def CFGtoCNF(filepath):
     while isUnitaryExist(productions, variables):
         productions = eliminateUnitary(productions, variables)
     
-    dictionary = {}
+    cnf = {}
     for prod in productions:
-        if prod[0] in dictionary.keys():
-            dictionary[prod[0]].append(prod[1]) 
+        if prod[0] in cnf.keys():
+            cnf[prod[0]].append(prod[1]) 
         else:
-            dictionary[prod[0]] = []
-            dictionary[prod[0]].append(prod[1])
-        
-    return dictionary
+            cnf[prod[0]] = []
+            cnf[prod[0]].append(prod[1])
+
+    for x in cnf:
+        print(x, cnf[x])
+
+    return cnf
+
+CFGtoCNF("grammarfixbrow.txt")
