@@ -142,7 +142,7 @@ PETIK2 -> "
 GRAVE -> `
 NULLS -> null
 ANDS -> & &
-ORS -> or
+ORS -> ||
 INS -> in
 NOTS -> !
 TRUES -> true
