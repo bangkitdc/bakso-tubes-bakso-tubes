@@ -1,4 +1,5 @@
-if (true) { 
-    x = 1;
-    x = 2;
+function nana(a) {
+    if (x) {
+        x = 2;
+    }
 }

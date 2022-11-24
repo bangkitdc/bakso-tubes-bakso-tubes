@@ -1,4 +1,4 @@
-function dosomething(a){    
+function babba(a){    
     if (a==2) {
         return 0;
     } else if (a==3) {
