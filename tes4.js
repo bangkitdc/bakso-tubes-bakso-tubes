@@ -1,3 +1,3 @@
-    while (true) {
-        break
-    }
+while (false) {
+    break;
+}
