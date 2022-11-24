@@ -9,7 +9,7 @@ def splitCode(filename):
     result = []
 
     # ignore blanks
-    inputFile = inputFile.split(" ")
+    inputFile = inputFile.replace("\n","").split(" ")
     for statement in inputFile:
         if statement != '':
             result.append(statement)    # insert to result

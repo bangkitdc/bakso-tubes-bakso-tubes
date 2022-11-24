@@ -1,3 +1,3 @@
-var tes;
-tes = "tesgitu";
-var tbfo = "gajelas";
+var tes = "gajelas"
+var a;
+a = "a";
