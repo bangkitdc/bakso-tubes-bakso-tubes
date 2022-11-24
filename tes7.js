@@ -1,16 +1,10 @@
-function testhrowtrycatchfinally(x) {
+function test(x) {
     if (x == 69) {
-        throw 'throw';
+        throw 'thx';
     }
     try {
-        try {
-            fungsigajelas(x);
-        }
-        finally {
-            tubesgajelas(x);
-        }
-    }
-    catch {
-        return x;
+        x = 2;
+    } finally {
+        a = 2;
     }
 }

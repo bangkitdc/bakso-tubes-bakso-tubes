@@ -41,8 +41,6 @@ R = {
 #             print(elements)
 
 def cyk(w, cnfGrammar):
-    print(w)
-
     n = len(w)
     T = [[set([]) for i in range(n)] for j in range(n)]
 
@@ -70,6 +68,3 @@ def cyk(w, cnfGrammar):
     else:
         return False
         # print("Syntax Error!")
-
-# w = "a very heavy orange book".split()
-# cyk(w, R)
