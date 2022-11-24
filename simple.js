@@ -1,3 +1,4 @@
-if (true) {
-    return 1
+if (true) { 
+    x = 1 
+    x = 2
 }

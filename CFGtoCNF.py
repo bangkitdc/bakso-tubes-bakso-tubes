@@ -81,9 +81,7 @@ def CFGtoCNF(filepath):
             cnf[prod[0]] = []
             cnf[prod[0]].append(prod[1])
 
-    for x in cnf:
-        print(x, cnf[x])
+    for i in productions:
+        print(i)
 
     return cnf
-
-CFGtoCNF("grammarfixbrow.txt")
