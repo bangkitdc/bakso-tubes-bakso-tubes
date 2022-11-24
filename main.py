@@ -20,7 +20,9 @@ flag = CYK.cyk(output, CNFGrammar)
 
 t1.join()
 if flag :
+    splashscreen.splashAcc()
     print("Accepted Answer!")
 else:
+    splashscreen.S
     print("Syntax Error!")
 
