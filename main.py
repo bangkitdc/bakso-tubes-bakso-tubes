@@ -23,6 +23,6 @@ if flag :
     splashscreen.splashAcc()
     print("Accepted Answer!")
 else:
-    splashscreen.S
+    splashscreen.splashError()
     print("Syntax Error!")
 

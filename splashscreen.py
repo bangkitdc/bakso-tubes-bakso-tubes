@@ -2,7 +2,7 @@
 from colorama import Fore, Back, Style
 
 def splash():    
-    print(Fore.CYAN+"""       
+    print(Fore.CYAN+"""
              ____________________________________________________
             /                                                    \\
            |    _____________________________________________     |
