@@ -1,7 +1,7 @@
 
-function dosomething(a){
+function do_something(a){
     while (i < 10) {
         a = a + 1;
     }
-    return a
+    return a;
 }

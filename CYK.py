@@ -40,6 +40,8 @@ R = {
 #             print(elements)
 
 def cyk(w, cnfGrammar):
+    print(w)
+
     n = len(w)
     T = [[set([]) for i in range(n)] for j in range(n)]
 
@@ -58,10 +60,6 @@ def cyk(w, cnfGrammar):
                         if len(prod) == 2 :
                             if(prod[0] in T[i][k]) and (prod[1] in T[k+1][j]):
                                 T[i][j].add(var[0])
-
-    for x in T:
-        print(x)
-        print("-----")
 
     if "S0" in T[0][n-1] :
         print("Accepted Answer!")
