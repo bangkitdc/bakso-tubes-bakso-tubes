@@ -16,7 +16,7 @@ def q2(c):  # final state
         state = 2
     elif (97 <= ord(c) <= 122):     # a - z
         state = 2
-    elif (48 <= ord(c) <= 57)       # 0 - 9
+    elif (48 <= ord(c) <= 57):      # 0 - 9
         state = 2
     else:
         state = 3
@@ -60,7 +60,7 @@ def q6(c): # input character yang salah (dead state)
 
 def isValidNumber(s):
     state = 4
-    for i in range(llen(s)):
+    for i in range(len(s)):
         if (state == 4):
             state = q4(s[i])
         if (state == 5):
