@@ -4,7 +4,12 @@ import CYK
 import CodeSplitter as split
 import threading
 import ProgressBar as PB
+import splashscreen
+
+
+
 t1 = threading.Thread(target=PB.ProgressBar, name='t1')
+splashscreen.splash()
 t1.start()
 
 CNFGrammar = CFGtoCNF.CFGtoCNF("grammarfixfix.txt")
@@ -18,3 +23,4 @@ if flag :
     print("Accepted Answer!")
 else:
     print("Syntax Error!")
+
