@@ -1,3 +1,3 @@
-if ( x = 2) {
-    return
+if (x = 2) {
+    return;
 }

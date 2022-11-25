@@ -7,7 +7,8 @@ def ProgressBar():
   for i in tqdm (range (100), 
                 desc="Loading…", 
                 ascii=False, ncols=90,colour='CYAN'):
-      time.sleep(0.01)
+      time.sleep(0.025)
+
 
 
  

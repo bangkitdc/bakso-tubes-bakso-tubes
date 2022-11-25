@@ -12,7 +12,7 @@ t1 = threading.Thread(target=PB.ProgressBar, name='t1')
 splashscreen.splash()
 t1.start()
 
-CNFGrammar = CFGtoCNF.CFGtoCNF("grammarfixfix.txt")
+CNFGrammar = CFGtoCNF.CFGtoCNF("grammar.txt")
 filename = sys.argv[1]
 output = split.splitCode(filename)
 print("Please wait! Compiling ...")
@@ -25,4 +25,5 @@ if flag :
 else:
     splashscreen.splashError()
     print(colorama.Fore.WHITE+"Syntax"+colorama.Fore.RED+" Error!\n")
+
 
