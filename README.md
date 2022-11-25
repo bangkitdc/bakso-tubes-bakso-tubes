@@ -1,14 +1,21 @@
-Tugas-Pemrograman-TBFO
+# TBFO - Javascript Syntax Checker
 
-Compiler python menggunakan metode Cocke Younger Kasami Algorithm. Program ini dapat mengecek apakah syntax dari sebuah python code sudah benar atau belum. Compiler ini dibuat berdasarkan CFG yang kami buat dan sudah dikonversi ke CNF. Oleh karena itu, kebenaran yang diuji hanyalah syntax dan belum tentu fungsionalitas program.
+This programs allows you to validate your javascript file, the programs will give a verdict `accepted` or `error`. We use CYK Algorithm to check whether the syntax is correct or not. This simple syntax checker build based on CFG that we've made and then convert it into CNF. Therefore the validity in this programs only validate about the syntax, not each functionality of the programs.
 
-Run
-Buka terminal pada main folder, lalu ketik :
+## How To Run
+Open your terminal in main folder and then type :
+```powershell
+python main.py <filename.js>
+```
 
-python main.py <namafile.py>
-Pastikan file terdapat pada folder yang sama dengan program
+Make sure your file is in the same folder as main program
 
-Contributor
-Muhammad Bangkit D.C (13521055)
-Bagas Aryo Seto (13521081)
-Muhammad Zaydan A (13521104)
+## Contributor
+| Nama                           |   NIM    |
+| ------------------------------ | :------: |
+| Muhammad Bangkit Dwi Cahyono   | 13521055 |
+| Bagas Aryo Seto                | 13521081 |
+| Muhammad Zaydan A.             | 13521104 |
+
+## Disclaimer
+There are still many shortcomings in this program because, the grammar only written manual one by one in `grammar.txt`, feel free to add more grammar
