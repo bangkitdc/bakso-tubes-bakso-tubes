@@ -37,4 +37,5 @@ try:
         print(colorama.Fore.WHITE+"Syntax"+colorama.Fore.RED+" Error!\n")
 
 except:
-    print("filenya gaada syg")
+    print(""""No file selected.
+          Aborting...""")
