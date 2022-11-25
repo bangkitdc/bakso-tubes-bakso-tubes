@@ -15,12 +15,12 @@ src.splashscreen.splash()
 
 # CFG -> CNF (CFG from .txt)
 CNFGrammar = src.CFGtoCNF.CFGtoCNF("txt/grammar.txt")
-filename = "test/" +  sys.argv[1]
 
-print("Please wait! Compiling ...")
 
 try:
-    
+    filename = "test/" +  sys.argv[1]
+
+    print("Please wait! Compiling ...")
     # Read testfile (.js)
     output = split.splitCode(filename)
     t1.start()
