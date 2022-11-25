@@ -1,7 +1,7 @@
 import re       #regular expression
 import FA as fa
 
-#split code from file code
+# Split code from file code
 def splitCode(filename):
     f = open(filename, "r")
     inputFile = f.read()
@@ -9,12 +9,12 @@ def splitCode(filename):
 
     result = []
 
-    # ignore blanks
+    # Ignore blanks and newline
     inputFile = inputFile.replace("\n","").split(" ")
 
     for statement in inputFile:
         if statement != '':
-            result.append(statement)    # insert to result
+            result.append(statement)    # Insert to result
     
     operator = [r'\(', r'\)', r'\[', r'\]', r'\{', r'\}', r'\*', r'\*\*', r'\+', r'\+\+', r'\-', r'\-\-', '%', ',', r'\.', '/', '-', ':', ';', '<', '=', '>', '!=', '==', '>=', '<=', '===', r'\'', r'\"', r'\/\*', r'\*\/',r'\`','null', 'true', 'false', 'for', 'else', 'while', 'break', 'continue', 'function', 'return', 'throw', 'catch', 'finally', 'throw', 'try', 'catch', 'delete', 'class', 'extends', 'from', 'import', 'export', 'switch', 'case', 'default', 'var', 'const']
     operator2 = ['(', ')', '[', ']', '{', '}', '*', '**', '+', '++', '-', '--', '%', ',', '.', '/', '-', ':', ';', '<', '=', '>', '!=', '==', '>=', '<=', '===', "'", '"', r'/*', r'*/', r'\`','null', 'true', 'false', 'for', 'else', 'while', 'break', 'continue', 'function', 'return', 'throw', 'catch', 'finally', 'throw', 'try', 'catch', 'delete', 'class', 'extends', 'from', 'import', 'export', 'switch', 'case', 'default', 'var', 'const'] 
@@ -29,14 +29,15 @@ def splitCode(filename):
                 temp.append(splitted)
         result = temp
     
-    # check list
     temp = []
+    exception = ['in', 'if', 'as', 'do', 'let']
 
+    # Split variables
     for statement in result:
         if statement in operator2:
             temp.append(statement)
         else:
-            if statement == 'in' or statement == 'if' or statement == 'as' or statement == 'do' or statement == 'let':
+            if statement in exception:
                 temp.append(statement)
             else:
                 if (fa.isValidVariable(statement)):
