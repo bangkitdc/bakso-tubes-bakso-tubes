@@ -1,4 +1,5 @@
 # contoh penggunaan
+# sc : geeksforgeeks
 # NP   ->  Det | Nom
 # Nom  ->  AP | Nom
 # AP   ->  Adv | A
@@ -31,12 +32,18 @@
 #     }
 
 def cyk(w, cnfGrammar):
+    # Length of the input strings
     n = len(w)
+
+    # Initialize Table
     T = [[set([]) for i in range(n)] for j in range(n)]
 
+    # Filling Table
     for i in range(n):
         for variable in cnfGrammar.items():
                 for terminal in variable[1]:
+
+                    # If a terminal is found
                     if len(terminal) == 1 and terminal[0] == w[i]:
                         T[i][i].add(variable[0])
 
@@ -46,10 +53,13 @@ def cyk(w, cnfGrammar):
             for k in range (i,j):
                 for variable in cnfGrammar.items():
                     for production in variable[1] :
+
+                        # If a terminal is found
                         if len(production) == 2 :
                             if(production[0] in T[i][k]) and (production[1] in T[k+1][j]):
                                 T[i][j].add(variable[0])
 
+    # If S0 on top of CYK Table, then true (is in L(G))
     if "S0" in T[0][n-1] :
         return True
     else:
