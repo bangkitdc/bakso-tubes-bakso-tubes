@@ -1,7 +1,7 @@
 
 from colorama import Fore, Back, Style
 
-def splash():    
+def splash():    #SplashScreen for main program
     print(Fore.CYAN+"""
              ____________________________________________________
             /                                                    \\
@@ -35,7 +35,7 @@ def splash():
     
     input(Fore.WHITE+"Press Enter to compile...")
     
-def splashAcc():
+def splashAcc(): #SplashScreen when syntax accepted
     print(Fore.GREEN + """         
           
  █████╗  ██████╗ ██████╗███████╗██████╗ ████████╗███████╗██████╗ 
@@ -46,7 +46,7 @@ def splashAcc():
 ╚═╝  ╚═╝ ╚═════╝ ╚═════╝╚══════╝╚═╝        ╚═╝   ╚══════╝╚═════╝                                                                  
          """)
     
-def splashError():
+def splashError(): #SplashScreen when syntax error
     print(Fore.RED+"""
 ███████╗██████╗ ██████╗  ██████╗ ██████╗ 
 ██╔════╝██╔══██╗██╔══██╗██╔═══██╗██╔══██╗

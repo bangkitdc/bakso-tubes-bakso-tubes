@@ -1,6 +1,7 @@
 import re       #regular expression
 import FA as fa
 
+#split code from file code
 def splitCode(filename):
     f = open(filename, "r")
     inputFile = f.read()

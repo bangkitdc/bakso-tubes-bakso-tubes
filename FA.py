@@ -58,7 +58,7 @@ def q6(c): # input character yang salah (dead state)
     state = 6
     return state
 
-def isValidNumber(s):
+def isValidNumber(s): #chekc validity of a number
     state = 4
     for i in range(len(s)):
         if (state == 4):

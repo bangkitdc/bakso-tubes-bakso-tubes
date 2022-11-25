@@ -31,14 +31,7 @@ R = {
            ["muscular"]]
     }
 
-# n = len(w)
 
-# T = [[set([]) for i in range(n)] for j in range(n)]
-
-# for i in range(n):
-#     for LHS, RHS in R.items():  # prodRule = LHS : RHS (1 | 2 | .. | N)
-#         for elements in RHS:
-#             print(elements)
 
 def cyk(w, cnfGrammar):
     n = len(w)
@@ -68,3 +61,13 @@ def cyk(w, cnfGrammar):
     else:
         return False
         # print("Syntax Error!")
+        
+        
+# n = len(w)
+
+# T = [[set([]) for i in range(n)] for j in range(n)]
+
+# for i in range(n):
+#     for LHS, RHS in R.items():  # prodRule = LHS : RHS (1 | 2 | .. | N)
+#         for elements in RHS:
+#             print(elements)
