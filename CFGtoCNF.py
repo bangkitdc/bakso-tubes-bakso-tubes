@@ -1,9 +1,12 @@
+# read CFG Grammar from file
 def readCFG(filepath):
     file = open(filepath, 'r').read()
+    # split terminals, variables and productions
     terminals = file.split("Variables:")[0]
     variables = file.split("Variables:")[1].split("Productions:")[0]
     prods = file.split("Productions:\n")[1]
 
+    # process terminals, variables, and productions
     terminals = terminals.replace("Terminals:","").replace("\n","").split(' ')
     variables = variables.replace("variables:","").replace("\n","").split(' ')
     prods = prods.replace("Production:","").split('\n')
@@ -17,24 +20,29 @@ def readCFG(filepath):
     
     return terminals, variables, newprods
 
-def isSimple(terminals, variables ,prod):
+# return True if production is simple
+def isSimpleProduction(terminals, variables ,prod):
 	return len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in terminals
 
-def setupDict(terminals, variables, productions):
+# return list of simple production
+def simpleProductionDict(terminals, variables, productions):
 	result = {}
 	for prod in productions:
 		if len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in terminals:
 			result[prod[1][0]] = prod[0]
 	return result
 
+# return True if production is unitary
 def isUnitary(prod, variables):
     return len(prod[1]) == 1 and prod[0] in variables and prod[1][0] in variables
 
+# return True if there is any unitary production in productions
 def isUnitaryExist(productions, variables):
     for prod in productions:
         if isUnitary(prod, variables): return True
     return False
 
+# eliminate all unitary production in productions
 def eliminateUnitary(productions, variables):
     newprods = []
     for prod in productions:
@@ -46,42 +54,37 @@ def eliminateUnitary(productions, variables):
             newprods.append(prod)
     return newprods
 
+# generate new variable from existing variable
 def generateVar(V):
     if V[-1] == '9':
         return V[:-2] + chr(ord(V[-2])+1) + '1'
     return V[:-2] + V[-2] + chr(ord(V[-1])+1)
 
-
+# read CFG Grammar from file then returning the CNF Grammar form
 def CFGtoCNF(filepath):
-    
+    # load CFG terminals, variables, and productions
     terminals, variables, productions = readCFG(filepath)
     variables.append('S0')
     productions = [('S0', [variables[0]])] + productions
-    dict = setupDict(terminals, variables, productions)
 
+    # process non simple production with only terminals as values
+    dict = simpleProductionDict(terminals, variables, productions)
     newprods = []
-    newvar = "AA0"
+
     for prod in productions:
-        if isSimple(terminals, variables, prod):
-            newprods.append(prod)
-        else:
+        if not isSimpleProduction(terminals, variables, prod):
             for term in terminals:
                 for index, value in enumerate(prod[1]):
-                    if term == value and not term in dict:
-                        newvar = generateVar(newvar)
-                        dict[term] = newvar
-                        variables.append(dict[term])
-                        newprods.append((dict[term], [term]))
+                    if term == value:
                         prod[1][index] = dict[term]
-                    elif term == value:
-                        prod[1][index] = dict[term]
-            newprods.append( (prod[0], prod[1]) )
+        newprods.append(prod)
 
     productions = newprods
 
+    # process productions with more than 2 values and adding new variables
     newprods = []
     newvar = "A0"
-    
+
     for prod in productions:
         k = len(prod[1])
         if k <= 2:
@@ -101,9 +104,11 @@ def CFGtoCNF(filepath):
     
     productions = newprods
 
+    # process all unitary variables
     while isUnitaryExist(productions, variables):
         productions = eliminateUnitary(productions, variables)
     
+    # convert processed CFG Grammar to CNF form
     cnf = {}
     for prod in productions:
         if prod[0] in cnf.keys():
@@ -112,4 +117,5 @@ def CFGtoCNF(filepath):
             cnf[prod[0]] = []
             cnf[prod[0]].append(prod[1])
 
+    # return CNF Grammar
     return cnf
