@@ -3,6 +3,6 @@ function test(x) {
     throw "thx";
   }
   switch (key) {
-    
+    case :
   }
 }
