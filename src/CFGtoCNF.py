@@ -131,7 +131,7 @@ def CFGtoCNF(filepath):
             cnf[prod[0]].append(prod[1])
 
     # write CNF to txt
-    displayCNF(cnf, "CNFGrammar.txt")
+    displayCNF(cnf, "txt/CNFGrammar.txt")
 
     # return CNF Grammar
     return cnf

@@ -1,5 +1,5 @@
 import re       #regular expression
-import FA as fa
+import src.FA as fa
 
 # Split code from file code
 def splitCode(filename):

@@ -1,22 +1,21 @@
+import src.CFGtoCNF
+import src.CYK
+import src.CodeSplitter as split
+import src.splashscreen
 import sys
-import CFGtoCNF
-import CYK
-import CodeSplitter as split
-import threading
-import ProgressBar as PB
-import splashscreen
 import colorama
+import threading
 
 # Initialize multithread
-t1 = threading.Thread(target=PB.ProgressBar, name='t1')
+t1 = threading.Thread(target=src.splashscreen.ProgressBar, name='t1')
 
 # Splash screen
-splashscreen.splash()
+src.splashscreen.splash()
 t1.start()
 
 # CFG -> CNF (CFG from .txt)
-CNFGrammar = CFGtoCNF.CFGtoCNF("grammar.txt")
-filename = sys.argv[1]
+CNFGrammar = src.CFGtoCNF.CFGtoCNF("txt/grammar.txt")
+filename = "test/" +  sys.argv[1]
 output = split.splitCode(filename)
 print("Please wait! Compiling ...")
 
@@ -24,12 +23,12 @@ print("Please wait! Compiling ...")
 output = split.splitCode(filename)
 
 # Check with CYK algorithm
-flag = CYK.cyk(output, CNFGrammar)
+flag = src.CYK.cyk(output, CNFGrammar)
 
 t1.join()
 if flag :
-    splashscreen.splashAcc()
+    src.splashscreen.splashAcc()
     print("Accepted "+colorama.Fore.WHITE+"Answer!\n")
 else:
-    splashscreen.splashError()
+    src.splashscreen.splashError()
     print(colorama.Fore.WHITE+"Syntax"+colorama.Fore.RED+" Error!\n")
