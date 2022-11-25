@@ -60,6 +60,19 @@ def generateVar(V):
         return V[:-2] + chr(ord(V[-2])+1) + '1'
     return V[:-2] + V[-2] + chr(ord(V[-1])+1)
 
+# write CNF Grammar to txt file
+def displayCNF(CNF, filename):
+    result = ""
+    for key in CNF:
+        result += key + " -> "
+        for val in CNF[key]:
+            for v in val:
+                result += v + " "
+            if (val != CNF[key][-1]):
+                result += " | "
+        result += "\n"
+    open(filename, 'w').write(result)
+
 # read CFG Grammar from file then returning the CNF Grammar form
 def CFGtoCNF(filepath):
     # load CFG terminals, variables, and productions
@@ -116,6 +129,9 @@ def CFGtoCNF(filepath):
         else:
             cnf[prod[0]] = []
             cnf[prod[0]].append(prod[1])
+
+    # write CNF to txt
+    displayCNF(cnf, "CNFGrammar.txt")
 
     # return CNF Grammar
     return cnf
