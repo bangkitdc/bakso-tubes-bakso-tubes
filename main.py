@@ -7,7 +7,7 @@ import ProgressBar as PB
 import splashscreen
 import colorama
 
-
+# Initialize multithread
 t1 = threading.Thread(target=PB.ProgressBar, name='t1')
 
 # Splash screen
@@ -33,5 +33,3 @@ if flag :
 else:
     splashscreen.splashError()
     print(colorama.Fore.WHITE+"Syntax"+colorama.Fore.RED+" Error!\n")
-
-
